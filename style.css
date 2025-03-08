@@ -2,9 +2,11 @@
     --container-bg-color: #333;
     --left-bg-color: #0c726db7;
     --left-button-hover-color: #0538366e;
+    --center-bg-color: rgba(60, 60, 60, 0.8);
+    --center-button-hover-color: rgba(120, 120, 120, 0.3);
     --right-bg-color: rgba(43, 43, 43, 0.8);
     --right-button-hover-color: rgb(92, 92, 92, 0.3);
-    --hover-width: 75%;
+    --hover-width: 50%;
     --other-width: 25%;
     --speed: 1000ms;
 }
@@ -12,7 +14,6 @@
 html, body {
     padding: 0;
     margin: 0;
-
     width: 100%;
     height: 100%;
     overflow-x: hidden;
@@ -24,7 +25,7 @@ h1 {
     position: absolute;
     font-family: monospace;
     left: 50%;
-    top: 20%;
+    top: 40%;
     transform: translateX(-50%);
     white-space: nowrap;
 }
@@ -34,7 +35,7 @@ h1 {
     position: absolute;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     left: 50%;
-    top: 40%;
+    top: 55%;
     height: 2.5rem;
     padding-top: 1.3rem;
     width: 15rem;
@@ -48,9 +49,52 @@ h1 {
     transform: translateX(-50%);
 }
 
+.button1 {
+    display: block;
+    position: absolute;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    left: 30%;
+    top: 55%;
+    height: 2.5rem;
+    padding-top: 1.3rem;
+    width: 11rem;
+    text-align: center;
+    color: #fff;
+    border: #fff solid 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transform: translateX(-50%);
+}
+
+.button2 {
+    display: block;
+    position: absolute;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    left: 70%;
+    top: 55%;
+    height: 2.5rem;
+    padding-top: 1.3rem;
+    width: 11rem;
+    text-align: center;
+    color: #fff;
+    border: #fff solid 0.2rem;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+    transform: translateX(-50%);
+}
+
 .split.left .button:hover {
     background-color: var(--left-button-hover-color);
     border-color: var(--left-button-hover-color);
+}
+
+.split.center .button:hover {
+    background-color: var(--center-button-hover-color);
+    border-color: var(--center-button-hover-color);
 }
 
 .split.right .button:hover {
@@ -67,7 +111,7 @@ h1 {
 
 .split {
     position: absolute;
-    width: 50%;
+    width: 33.33%;
     height: 100%;
     overflow: hidden;
 }
@@ -86,9 +130,23 @@ h1 {
     background-color: var(--left-bg-color);
 }
 
+.split.center {
+    left: 33.33%;
+    background: url('img/weddingcard.jpg') center center no-repeat;
+    background-size: auto;
+}
+
+.split.center:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    background-color: var(--center-bg-color);
+}
+
 .split.right {
     right: 0;
-    background: url('img/weddingcard.jpg') center center no-repeat;
+    background: url('img/homes.jpeg') center center no-repeat;
     background-size: cover;
 }
 
@@ -100,12 +158,24 @@ h1 {
     background-color: var(--right-bg-color);
 }
 
-.split.left, .split.right, .split.left:before, .split.right:before {
+.split.left,
+.split.center,
+.split.right,
+.split.left:before,
+.split.center:before,
+.split.right:before {
     transition: var(--speed) all ease-in-out;
 }
 
 .hover-left .left {
     width: var(--hover-width);
+}
+
+.hover-left .center {
+    width: var(--other-width);
+    left: 62.5%;
+    transform: translateX(-50%);
+    background-color: var(--center-bg-color);
 }
 
 .hover-left .right {
@@ -116,16 +186,93 @@ h1 {
     z-index: 2;
 }
 
+.hover-left .center:before {
+    z-index: 2;
+}
+
+.hover-center .center {
+    width: var(--hover-width);
+    left: 25%;
+}
+
+.hover-center .left, .hover-center .right {
+    width: var(--other-width);
+}
+
+.hover-center .left:before {
+    z-index: 2;
+}
+
+.hover-center .right:before {
+    z-index: 2;
+}
+
 .hover-right .right {
     width: var(--hover-width);
 }
 
-.hover-right .left {
+.hover-right .left, .hover-right .center {
     width: var(--other-width);
+}
+
+.hover-right .center {
+    width: var(--other-width);
+    left: 37.6%;
+    transform: translateX(-50%);
+    background-color: var(--center-bg-color);
 }
 
 .hover-right .left:before {
     z-index: 2;
+}
+
+.hover-right .center:before {
+    z-index: 2;
+}
+
+.logo1 {
+    width: 40%;
+    /* height: 50%; */
+    background-size: contain;
+
+    display: block;
+    position: absolute;
+    left: 30%;
+    top: 28%;
+}
+
+
+.logo2 {
+    width: 30%;
+    /* height: 50%; */
+    background-size: contain;
+
+    display: block;
+    position: absolute;
+    left: 55%;
+    top: 20%;
+}
+
+.logo3 {
+    width: 20%;
+    /* height: 50%; */
+    background-size: contain;
+
+    display: block;
+    position: absolute;
+    left: 20%;
+    top: 22%;
+}
+
+.logo4 {
+    width: 20%;
+    /* height: 50%; */
+    background-size: contain;
+
+    display: block;
+    position: absolute;
+    left: 40%;
+    top: 28%;
 }
 
 @media(max-width: 800px) {
@@ -143,9 +290,3 @@ h1 {
         top: 70%;
     }
 }
-
-/* .bg-profound {
-    background-image: url('./bg-profound.jpg');
-    background-size: cover;
-    background-position: 100;
-} */
